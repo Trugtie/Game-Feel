@@ -16,12 +16,9 @@ public class Bullet : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    private void Start() {
-        if (PlayerController.Instance.IsFacingRight()) {
-            _fireDirection = Vector2.right;
-        } else {
-            _fireDirection = Vector2.left;
-        }
+    public void Init(Vector2 bulletSpawnPos, Vector2 mousePos)
+    {
+        _fireDirection = (mousePos - bulletSpawnPos).normalized;
     }
 
     private void FixedUpdate()
@@ -29,7 +26,8 @@ public class Bullet : MonoBehaviour
         _rigidBody.velocity = _fireDirection * _moveSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         Health health = other.gameObject.GetComponent<Health>();
         health?.TakeDamage(_damageAmount);
         Destroy(this.gameObject);
