@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,9 +25,13 @@ public class Gun : MonoBehaviour
 
     private Vector3 _mousePos;
 
+    private CinemachineImpulseSource _cinemachineImpulseSrc;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+
+        _cinemachineImpulseSrc = GetComponent<CinemachineImpulseSource>();
     }
 
     private void Start()
@@ -37,11 +42,13 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         OnFire += PlayGunAnim;
+        OnFire += ActiveScreenShake;
     }
 
     private void OnDisable()
     {
         OnFire -= PlayGunAnim;
+        OnFire -= ActiveScreenShake;
     }
 
     private void Update()
@@ -101,5 +108,10 @@ public class Gun : MonoBehaviour
     private void PlayGunAnim()
     {
         _animator.Play(FIRE_HASH, 0, 0f);
+    }
+
+    private void ActiveScreenShake()
+    {
+        _cinemachineImpulseSrc.GenerateImpulse();
     }
 }
