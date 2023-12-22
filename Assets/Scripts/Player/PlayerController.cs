@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpStrength = 7f;
 
-    private bool _isGrounded = false;
+    [SerializeField] private Transform _feetPos;
+    [SerializeField] private Vector2 _feetBoxSize;
+    [SerializeField] private LayerMask _groundLayer;
+
     private Vector2 _movement;
 
     private Rigidbody2D _rigidBody;
@@ -31,22 +34,6 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            _isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            _isGrounded = false;
-        }
-    }
-
     public bool IsFacingRight()
     {
         return transform.eulerAngles.y == 0;
@@ -65,9 +52,21 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded) {
+        if (Input.GetKeyDown(KeyCode.Space) && CheckOnGround()) {
             _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
         }
+    }
+
+    private bool CheckOnGround()
+    {
+        bool isGrounded = Physics2D.OverlapBox(_feetPos.position, _feetBoxSize, 0f, _groundLayer);
+        return isGrounded;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(_feetPos.position, _feetBoxSize);
     }
 
     private void HandleSpriteFlip()
