@@ -6,32 +6,67 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
-    [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _jumpStrength = 7f;
 
     [SerializeField] private Transform _feetPos;
     [SerializeField] private Vector2 _feetBoxSize;
     [SerializeField] private LayerMask _groundLayer;
 
-    private Vector2 _movement;
+    [SerializeField] private float _extraGravity = 700f;
+    [SerializeField] private float _gravityCustomDelayTimerMax = .2f;
+
+    private float _gravityCustomDelayTimer;
+
 
     private Rigidbody2D _rigidBody;
+
+    private PlayerInput _playerInput;
+    private FrameInput _frameInput;
+
+    private Movement _movement;
 
     public void Awake() {
         if (Instance == null) { Instance = this; }
 
         _rigidBody = GetComponent<Rigidbody2D>();
+
+        _playerInput = GetComponent<PlayerInput>();
+
+        _movement = GetComponent<Movement>();
     }
 
     private void Update()
     {
         GatherInput();
+        Movement();
         Jump();
+        CalculateGravityCustomDelayTime();
         HandleSpriteFlip();
     }
 
-    private void FixedUpdate() {
-        Move();
+    private void FixedUpdate()
+    {
+        AddExtraGravity();
+    }
+
+    private void CalculateGravityCustomDelayTime()
+    {
+        if (!CheckOnGround())
+        {
+            _gravityCustomDelayTimer += Time.deltaTime;
+        }
+        else
+        {
+            _gravityCustomDelayTimer = 0f;
+        }
+    }
+
+    private void AddExtraGravity()
+    {
+        if (_gravityCustomDelayTimer > _gravityCustomDelayTimerMax)
+        {
+            _rigidBody.AddForce(new Vector2(0, -_extraGravity*Time.deltaTime));
+        }
     }
 
     public bool IsFacingRight()
@@ -41,18 +76,19 @@ public class PlayerController : MonoBehaviour
 
     private void GatherInput()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        _movement = new Vector2(moveX * _moveSpeed, _rigidBody.velocity.y);
+        _frameInput = _playerInput.FrameInput;
     }
 
-    private void Move() {
+    private void Movement() {
 
-        _rigidBody.velocity = _movement;
+        _movement.SetCurrentDir(_frameInput.Move.x);
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && CheckOnGround()) {
+        if (!_frameInput.Jump) return;
+
+        if (CheckOnGround()) {
             _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
         }
     }
