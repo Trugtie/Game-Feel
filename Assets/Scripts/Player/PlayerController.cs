@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Action OnJump;
+
     public static PlayerController Instance;
 
     [SerializeField] private float _jumpStrength = 7f;
@@ -16,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _gravityCustomDelayTimerMax = .2f;
 
     private float _gravityCustomDelayTimer;
+
+    private bool _doubleJumpAvailable;
 
 
     private Rigidbody2D _rigidBody;
@@ -35,11 +40,21 @@ public class PlayerController : MonoBehaviour
         _movement = GetComponent<Movement>();
     }
 
+    private void OnEnable()
+    {
+        OnJump += ApplyJumpForce;
+    }
+
+    private void OnDisable()
+    {
+        OnJump -= ApplyJumpForce;
+    }
+
     private void Update()
     {
         GatherInput();
         Movement();
-        Jump();
+        HandleJump();
         CalculateGravityCustomDelayTime();
         HandleSpriteFlip();
     }
@@ -84,13 +99,25 @@ public class PlayerController : MonoBehaviour
         _movement.SetCurrentDir(_frameInput.Move.x);
     }
 
-    private void Jump()
+    private void HandleJump()
     {
         if (!_frameInput.Jump) return;
 
-        if (CheckOnGround()) {
-            _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
+        if (_doubleJumpAvailable) {
+            _doubleJumpAvailable = false;
+            OnJump?.Invoke();
+        }else if (CheckOnGround())
+        {
+            _doubleJumpAvailable = true;
+            OnJump?.Invoke();
         }
+    }
+
+    private void ApplyJumpForce()
+    {
+        _rigidBody.velocity = Vector2.zero;
+        _gravityCustomDelayTimer = 0f;
+        _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
     }
 
     private bool CheckOnGround()
