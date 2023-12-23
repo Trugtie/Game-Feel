@@ -7789,6 +7789,7 @@ MonoBehaviour:
     m_Bits: 64
   _extraGravity: 900
   _gravityCustomDelayTimerMax: 0.2
+  _coyoteTimerMax: 0.5
 --- !u!70 &2011273897
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

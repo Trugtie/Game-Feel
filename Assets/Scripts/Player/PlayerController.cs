@@ -17,10 +17,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _extraGravity = 700f;
     [SerializeField] private float _gravityCustomDelayTimerMax = .2f;
+    [SerializeField] private float _coyoteTimerMax = 0.5f;
 
     private float _gravityCustomDelayTimer;
 
     private bool _doubleJumpAvailable;
+
+    private float _coyoteTimer;
 
 
     private Rigidbody2D _rigidBody;
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         GatherInput();
         Movement();
+        CoyoteTimer();
         HandleJump();
         CalculateGravityCustomDelayTime();
         HandleSpriteFlip();
@@ -103,13 +107,30 @@ public class PlayerController : MonoBehaviour
     {
         if (!_frameInput.Jump) return;
 
-        if (_doubleJumpAvailable) {
+        if (CheckOnGround()) {
+            OnJump?.Invoke();
+        }
+        else if (_coyoteTimer > 0f)
+        {
+            OnJump?.Invoke();
+        }
+        else if (_doubleJumpAvailable)
+        {
             _doubleJumpAvailable = false;
             OnJump?.Invoke();
-        }else if (CheckOnGround())
+        }
+    }
+
+    private void CoyoteTimer()
+    {
+        if (CheckOnGround())
         {
             _doubleJumpAvailable = true;
-            OnJump?.Invoke();
+            _coyoteTimer = _coyoteTimerMax;
+        }
+        else
+        {
+            _coyoteTimer -= Time.deltaTime;
         }
     }
 
@@ -117,6 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidBody.velocity = Vector2.zero;
         _gravityCustomDelayTimer = 0f;
+        _coyoteTimer = 0f;
         _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
     }
 
