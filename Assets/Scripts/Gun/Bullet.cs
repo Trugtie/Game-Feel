@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private int _damageAmount = 1;
+    [SerializeField] private float _knockbackThurst = 20f;
 
     private Gun _gun;
 
@@ -34,6 +35,10 @@ public class Bullet : MonoBehaviour
     {
         Health health = other.gameObject.GetComponent<Health>();
         health?.TakeDamage(_damageAmount);
+
+        Knockback knockback = other.gameObject.GetComponent<Knockback>();
+        knockback?.GetKnockback(PlayerController.Instance.transform.position, _knockbackThurst);
+
         _gun.ReleaseBulletToPool(this);
     }
 }
