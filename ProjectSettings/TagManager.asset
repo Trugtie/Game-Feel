@@ -44,3 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TileMask
+    uniqueID: 93149965
+    locked: 0
+  - name: VFX
+    uniqueID: 4101284015
+    locked: 0
