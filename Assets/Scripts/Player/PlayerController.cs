@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
         _rigidBody.AddForce(Vector2.up * _jumpStrength, ForceMode2D.Impulse);
     }
 
-    private bool CheckOnGround()
+    public bool CheckOnGround()
     {
         bool isGrounded = Physics2D.OverlapBox(_feetPos.position, _feetBoxSize, 0f, _groundLayer);
         return isGrounded;
