@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveParticle : MonoBehaviour
+public class PlayerMoveAnimations : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _playerDustVFX;
+
 
     private void Update()
     {

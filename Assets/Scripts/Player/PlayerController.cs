@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,ILeanable
 {
+    public Vector2 MoveDir => _frameInput.Move;
+
     public static Action OnJump;
 
     public static PlayerController Instance;

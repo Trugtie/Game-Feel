@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,ILeanable
 {
     [SerializeField] private float _jumpForce = 7f;
     [SerializeField] private float _jumpInterval = 4f;
@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     private Movement _movement;
 
     private ColorChanger _colorChanger;
+
+    public Vector2 MoveDir => new Vector2(_currentDirection,0);
 
     private void Awake()
     {
