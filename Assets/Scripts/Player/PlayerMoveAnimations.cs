@@ -5,6 +5,17 @@ using UnityEngine;
 public class PlayerMoveAnimations : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _playerDustVFX;
+    [SerializeField] private ParticleSystem _poofDustVFX;
+
+    private void OnEnable()
+    {
+        PlayerController.OnJump += PoofHandle;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnJump -= PoofHandle;
+    }
 
 
     private void Update()
@@ -28,5 +39,10 @@ public class PlayerMoveAnimations : MonoBehaviour
                 _playerDustVFX.Stop();
             }
         }
+    }
+
+    private void PoofHandle()
+    {
+        _poofDustVFX.Play();
     }
 }
