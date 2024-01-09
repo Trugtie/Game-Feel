@@ -17,6 +17,10 @@ public class Gun : MonoBehaviour
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private float _gunFireCD = 0.5f;
 
+    [SerializeField] private float _muzzleFlashTimeMax = 0.2f;
+    [SerializeField] private GameObject _muzzleFlashLight;
+    private Coroutine _muzzleFlashRoutine;
+
     private ObjectPool<Bullet> _bulletPool;
 
     private float _lastFireTime;
@@ -43,12 +47,14 @@ public class Gun : MonoBehaviour
     {
         OnFire += PlayGunAnim;
         OnFire += ActiveScreenShake;
+        OnFire += HandleMuzzleFlash;
     }
 
     private void OnDisable()
     {
         OnFire -= PlayGunAnim;
         OnFire -= ActiveScreenShake;
+        OnFire -= HandleMuzzleFlash;
     }
 
     private void Update()
@@ -113,5 +119,25 @@ public class Gun : MonoBehaviour
     private void ActiveScreenShake()
     {
         _cinemachineImpulseSrc.GenerateImpulse();
+    }
+
+    private void HandleMuzzleFlash()
+    {
+        if (_muzzleFlashRoutine != null)
+        {
+            StopCoroutine( _muzzleFlashRoutine );
+        }
+
+        _muzzleFlashRoutine = StartCoroutine(MuzzleFlashRoutine());
+    }
+
+    private IEnumerator MuzzleFlashRoutine()
+    {
+        _muzzleFlashLight.SetActive(true);
+
+        yield return new WaitForSeconds(_muzzleFlashTimeMax);
+
+        _muzzleFlashLight.SetActive(false);
+
     }
 }
