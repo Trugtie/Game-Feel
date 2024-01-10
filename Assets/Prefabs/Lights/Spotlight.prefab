@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4177333376973850504}
+  - component: {fileID: 4740628168694763975}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -25,13 +26,28 @@ Transform:
   m_GameObject: {fileID: 1817392179573308690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.7, y: 1.541, z: -0.044889648}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7627202128135658968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4740628168694763975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817392179573308690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874ce2479d7017844b59dbf401bfad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spotLightTransform: {fileID: 5494247785098661329}
+  _rotationSpeed: 20
+  _rotationAngleMax: 40
 --- !u!1 &3956511808892306405
 GameObject:
   m_ObjectHideFlags: 0

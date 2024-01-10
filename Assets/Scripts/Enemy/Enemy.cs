@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour,ILeanable
+public class Enemy : MonoBehaviour,ILeanable,IDamgeable
 {
     [SerializeField] private float _jumpForce = 7f;
     [SerializeField] private float _jumpInterval = 4f;
@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour,ILeanable
 
     private ColorChanger _colorChanger;
 
+    private Flash _flash;
+    private Health _health;
+    private Knockback _knockback;
+
     public Vector2 MoveDir => new Vector2(_currentDirection,0);
 
     private void Awake()
@@ -24,6 +28,10 @@ public class Enemy : MonoBehaviour,ILeanable
         _movement = GetComponent<Movement>();
 
         _colorChanger = GetComponent<ColorChanger>();
+
+        _flash = GetComponent<Flash>();
+        _health = GetComponent<Health>();
+        _knockback = GetComponent<Knockback>();
     }
 
     private void Start() {
@@ -55,5 +63,17 @@ public class Enemy : MonoBehaviour,ILeanable
             Vector2 jumpDirection = new Vector2(randomDirection, 1f).normalized;
             _rigidBody.AddForce(jumpDirection * _jumpForce, ForceMode2D.Impulse);
         }
+    }
+
+    public void TakeDamge(int damgeAmout, float knockbackThurst)
+    {
+        _health.TakeDamage(damgeAmout);
+
+        _knockback.GetKnockback(PlayerController.Instance.transform.position, knockbackThurst);
+    }
+
+    public void TakeHit()
+    {
+        _flash.StartFlash();
     }
 }
