@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0423ed003e4d477478f656ce0971c7d9, type: 3}
-  m_Name: Jump
+  m_Name: Splat_2
   m_EditorClassIdentifier: 
   AudioType: 0
-  AudioClip: {fileID: 8300000, guid: 7c8cae594f3d102499f12cb4d77591c0, type: 3}
+  AudioClip: {fileID: 8300000, guid: 81f5cacd95b427f47ad1f42cb996a6c1, type: 3}
   Loop: 0
-  RandomizePitch: 0
-  RandomPitchRangeModifier: 1
-  Volume: 0.5
-  Pitch: 0.7
+  RandomizePitch: 1
+  RandomPitchRangeModifier: 0.1
+  Volume: 1
+  Pitch: 1

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2dc5f4c74082f43a77f3a8d0560a9d, type: 3}
+  m_Name: _Sound Collection SO
+  m_EditorClassIdentifier: 
+  Shoot:
+  - {fileID: 11400000, guid: 4a9893cbb68825740bd8a90de4f7bf9d, type: 2}
+  Jump:
+  - {fileID: 11400000, guid: 19b2ef5d304cce740a0d11bac2540f07, type: 2}
+  Splat:
+  - {fileID: 11400000, guid: dad5b33700fd0464389a4ccf4aaa89ef, type: 2}
+  - {fileID: 11400000, guid: 3fe65f4b5225a3e45a882d03047c5a85, type: 2}

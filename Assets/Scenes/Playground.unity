@@ -12358,8 +12358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a75d5829e8324345b4481256e7baf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSO: {fileID: 11400000, guid: 4a9893cbb68825740bd8a90de4f7bf9d, type: 2}
-  jumpSO: {fileID: 11400000, guid: 19b2ef5d304cce740a0d11bac2540f07, type: 2}
+  _masterVolume: 1
+  _soundCollection: {fileID: 11400000, guid: 4b0c4e2edd7c95f4db05d695958c549a, type: 2}
 --- !u!1 &1205977314
 GameObject:
   m_ObjectHideFlags: 0
