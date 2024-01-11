@@ -119,6 +119,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &120723762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 120723763}
+  m_Layer: 0
+  m_Name: DiscoBalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &120723763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120723762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 532422703}
+  m_Father: {fileID: 738951317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139553086
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,12 +869,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532422701}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.94, y: 3.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 56.35716, y: 6.1368666, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 120723763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &532422704
 MonoBehaviour:
@@ -907,11 +939,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6fc5a62da94f644adc892d338be3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _discoBallManger: {fileID: 1774461970}
 --- !u!4 &545330056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4177333376973850504, guid: 018f699dd0a52d64ebea46a13e8da3d0, type: 3}
   m_PrefabInstance: {fileID: 7135241014685994344}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &545330057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4740628168694763975, guid: 018f699dd0a52d64ebea46a13e8da3d0, type: 3}
+  m_PrefabInstance: {fileID: 7135241014685994344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874ce2479d7017844b59dbf401bfad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &585501354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 585501355}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &585501355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585501354}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.74968, y: 3.2091162, z: -0.016034037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1774461969}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5942,6 +6018,7 @@ Transform:
   m_Children:
   - {fileID: 1405926329}
   - {fileID: 1056917769}
+  - {fileID: 120723763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &771914338
@@ -17706,6 +17783,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585995695}
   m_CullTransparentMesh: 1
+--- !u!114 &1765159335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4740628168694763975, guid: 018f699dd0a52d64ebea46a13e8da3d0, type: 3}
+  m_PrefabInstance: {fileID: 249774563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874ce2479d7017844b59dbf401bfad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1774461968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774461969}
+  - component: {fileID: 1774461970}
+  m_Layer: 0
+  m_Name: DiscoBallManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774461969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774461968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 585501355}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774461970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774461968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce446cab97c98b1489884c5576da7cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _discoPartyTime: 2
+  _colorSpotlights:
+  - {fileID: 545330057}
+  - {fileID: 2097696437}
+  - {fileID: 1765159335}
+  _light2D: {fileID: 619394801}
+  _discoIntensity: 0.2
 --- !u!1 &1810510311
 GameObject:
   m_ObjectHideFlags: 0
@@ -18539,6 +18678,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4177333376973850504, guid: 018f699dd0a52d64ebea46a13e8da3d0, type: 3}
   m_PrefabInstance: {fileID: 2097696435}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097696437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4740628168694763975, guid: 018f699dd0a52d64ebea46a13e8da3d0, type: 3}
+  m_PrefabInstance: {fileID: 2097696435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874ce2479d7017844b59dbf401bfad4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2131065091
 GameObject:
   m_ObjectHideFlags: 0
@@ -18744,4 +18894,4 @@ SceneRoots:
   - {fileID: 2131065092}
   - {fileID: 976238571}
   - {fileID: 1900001457}
-  - {fileID: 532422703}
+  - {fileID: 585501355}

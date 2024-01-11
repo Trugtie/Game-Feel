@@ -7,7 +7,10 @@ public class ColorSpotLight : MonoBehaviour
     [SerializeField] private Transform _spotLightTransform;
 
     [SerializeField] private float _rotationSpeed = 20f;
+    [SerializeField] private float _discoRotationSpeed = 140f;
     [SerializeField] private float _rotationAngleMax = 40f;
+
+    private Coroutine _discoRoutine;
 
     private float _currentRotation;
 
@@ -37,5 +40,25 @@ public class ColorSpotLight : MonoBehaviour
         _spotLightTransform.localRotation = Quaternion.Euler(0f, 0f, randomAngleZ);
 
         _currentRotation = randomAngleZ + _rotationAngleMax;
+    }
+
+    public void TriggerDiscoParty(float durationTime)
+    {
+        if (_discoRoutine != null) return;
+
+        _discoRoutine = StartCoroutine(DiscoPartyRoutine(durationTime));
+    }
+
+    private IEnumerator DiscoPartyRoutine(float durationTime)
+    {
+        float previousRotationSpeed = _rotationSpeed;
+
+        _rotationSpeed = _discoRotationSpeed;
+
+        yield return new WaitForSeconds(durationTime);
+
+        _rotationSpeed = previousRotationSpeed;
+        _discoRoutine = null;
+
     }
 }
