@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   AudioType: 0
-  AudioClip: {fileID: 8300000, guid: 2cc678eb218c9f7439605e611e67461e, type: 3}
+  AudioClip: {fileID: 8300000, guid: 9733683075a3b874495c063b5da36daf, type: 3}
   Loop: 0
   RandomizePitch: 1
   RandomPitchRangeModifier: 0.1
