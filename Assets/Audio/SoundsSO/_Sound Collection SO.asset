@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2dc5f4c74082f43a77f3a8d0560a9d, type: 3}
   m_Name: _Sound Collection SO
   m_EditorClassIdentifier: 
+  DiscoPartyMusic:
+  - {fileID: 11400000, guid: d2576eff8bdff45429ae89895b4be0db, type: 2}
+  FightMusic:
+  - {fileID: 11400000, guid: 01f70805cecc6af488618086eb8d5dbe, type: 2}
   Shoot:
   - {fileID: 11400000, guid: 4a9893cbb68825740bd8a90de4f7bf9d, type: 2}
   Jump:

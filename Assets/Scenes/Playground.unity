@@ -12360,6 +12360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _masterVolume: 1
   _soundCollection: {fileID: 11400000, guid: 4b0c4e2edd7c95f4db05d695958c549a, type: 2}
+  _sfxAudioMixerGroup: {fileID: 3022973499090939778, guid: edad861d4a17bec4eb1978e21c321ffc, type: 2}
+  _musicAudioMixerGroup: {fileID: 6974879498241691724, guid: edad861d4a17bec4eb1978e21c321ffc, type: 2}
 --- !u!1 &1205977314
 GameObject:
   m_ObjectHideFlags: 0
@@ -17885,7 +17887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce446cab97c98b1489884c5576da7cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _discoPartyTime: 2
+  _discoPartyTime: 7
   _colorSpotlights:
   - {fileID: 545330057}
   - {fileID: 2097696437}

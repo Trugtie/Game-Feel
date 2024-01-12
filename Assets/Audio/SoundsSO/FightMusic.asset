@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0423ed003e4d477478f656ce0971c7d9, type: 3}
-  m_Name: Splat_1
+  m_Name: FightMusic
   m_EditorClassIdentifier: 
-  AudioType: 0
-  AudioClip: {fileID: 8300000, guid: 74f549ca493f08e47810befb30470ae7, type: 3}
-  Loop: 0
-  RandomizePitch: 1
-  RandomPitchRangeModifier: 0.1
-  Volume: 1.5
+  AudioType: 1
+  AudioClip: {fileID: 8300000, guid: 788b457089887de4b8af5945f1b26005, type: 3}
+  Loop: 1
+  RandomizePitch: 0
+  RandomPitchRangeModifier: 1
+  Volume: 1
   Pitch: 1

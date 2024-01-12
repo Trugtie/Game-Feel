@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class DiscoBallManger : MonoBehaviour
 {
-    private static Action OnDiscoBallHit;
+    public static Action OnDiscoBallHit;
 
     [SerializeField] private float _discoPartyTime = 2f;
 
