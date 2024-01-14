@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour,ILeanable
     [SerializeField] private Transform _feetPos;
     [SerializeField] private Vector2 _feetBoxSize;
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _platFormLayer;
 
     [SerializeField] private float _extraGravity = 700f;
     [SerializeField] private float _gravityCustomDelayTimerMax = .2f;
@@ -148,6 +149,12 @@ public class PlayerController : MonoBehaviour,ILeanable
     {
         bool isGrounded = Physics2D.OverlapBox(_feetPos.position, _feetBoxSize, 0f, _groundLayer);
         return isGrounded;
+    }
+
+    public bool CheckOnPlatform()
+    {
+        bool isPlatform = Physics2D.OverlapBox(_feetPos.position, _feetBoxSize, 0f, _platFormLayer);
+        return isPlatform;
     }
 
     private void OnDrawGizmos()
