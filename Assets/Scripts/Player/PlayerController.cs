@@ -62,8 +62,8 @@ public class PlayerController : MonoBehaviour,ILeanable
         Movement();
         CoyoteTimer();
         HandleJump();
-        CalculateGravityCustomDelayTime();
         HandleSpriteFlip();
+        CalculateGravityCustomDelayTime();
     }
 
     private void FixedUpdate()
