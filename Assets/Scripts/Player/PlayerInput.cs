@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _jetpackAction;
+    private InputAction _throwGrenadeAction;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerInput : MonoBehaviour
         _moveAction = _playerInputActions.Player.Move;
         _jumpAction = _playerInputActions.Player.Jump;
         _jetpackAction = _playerInputActions.Player.Jetpack;
+        _throwGrenadeAction = _playerInputActions.Player.ThrowGrenade;
     }
 
     private void OnEnable()
@@ -44,6 +46,8 @@ public class PlayerInput : MonoBehaviour
             Move = _moveAction.ReadValue<Vector2>(),
             Jump = _jumpAction.WasPressedThisFrame(),
             Jetpack = _jetpackAction.WasPressedThisFrame(),
+            ThrowGrenade = _throwGrenadeAction.WasPressedThisFrame(),
+            MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition),
         };
     }
 }
@@ -51,6 +55,8 @@ public class PlayerInput : MonoBehaviour
 public struct FrameInput
 {
     public Vector2 Move;
+    public Vector2 MousePos;
     public bool Jump;
     public bool Jetpack;
+    public bool ThrowGrenade;
 }

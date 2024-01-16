@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4726159597858871221}
   - component: {fileID: 2924240848382288396}
   - component: {fileID: 1867086161632446351}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4607624291104812750}
   - component: {fileID: 612885317134085090}
   - component: {fileID: 7789423469604516147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7803317493332171731}
   - component: {fileID: 6692527602052783191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BeepLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
