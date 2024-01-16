@@ -13,4 +13,5 @@ public class SoundCollectionSO : ScriptableObject
     public SoundSO[] Shoot;
     public SoundSO[] Jump;
     public SoundSO[] Splat;
+    public SoundSO[] Jetpack;
 }
