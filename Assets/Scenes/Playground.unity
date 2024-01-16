@@ -12766,8 +12766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerObject: {fileID: 817729410}
   _jetpackTrailRenderer: {fileID: 1013828688}
-  _jetpackMaxTime: 0.6
-  _jetpackStrenght: 16
+  _jetpackMaxTime: 2
+  _jetpackStrenght: 12
 --- !u!1 &1189817584
 GameObject:
   m_ObjectHideFlags: 0
