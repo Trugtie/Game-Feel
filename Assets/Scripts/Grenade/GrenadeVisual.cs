@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,13 @@ public class GrenadeVisual : MonoBehaviour
     [SerializeField] private ParticleSystem _explodeVFX;
     [SerializeField] private float _lightLifeTime = 0.1f;
 
+    private CinemachineImpulseSource _cinemachineImpulseSrc;
+
+    private void Awake()
+    {
+        _cinemachineImpulseSrc = GetComponent<CinemachineImpulseSource>();
+    }
+
     private void Start()
     {
         Grenade.OnExplode += Grenade_OnExplode;
@@ -18,6 +26,7 @@ public class GrenadeVisual : MonoBehaviour
     private void Grenade_OnExplode(Grenade grenade)
     {
         Instantiate(_explodeVFX,grenade.transform.position,Quaternion.identity);
+        _cinemachineImpulseSrc.GenerateImpulse();
     }
 
     private void Grenade_OnBeep(Grenade grenade)
