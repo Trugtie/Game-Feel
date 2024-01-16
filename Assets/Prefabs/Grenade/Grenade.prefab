@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _light2D: {fileID: 6692527602052783191}
   _explodeVFX: {fileID: 433947665214278232, guid: 7642ceb5e9723ec41ae9c8f86b044586, type: 3}
+  _lightLifeTime: 0.2
 --- !u!1 &3208369275018867789
 GameObject:
   m_ObjectHideFlags: 0

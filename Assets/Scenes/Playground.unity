@@ -19074,8 +19074,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 2011273898}
   _grenadePrefab: {fileID: 3208369275018867789, guid: a7c5bdd49dfbcc748896449c020d25fb, type: 3}
-  _throwStrength: 10
-  _torqueStrength: 5
+  _throwStrength: 800
+  _torqueStrength: 20
 --- !u!1 &2043640393
 GameObject:
   m_ObjectHideFlags: 0

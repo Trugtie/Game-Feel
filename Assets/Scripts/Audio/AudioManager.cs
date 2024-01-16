@@ -29,6 +29,8 @@ public class AudioManager : MonoBehaviour
         Health.OnDeath += Healt_OnDeath;
         DiscoBallManger.OnDiscoBallHit += PlayDiscoPartyMusic;
         Jetpack.OnJetpack+= Jetpack_OnJetpack;
+        Grenade.OnExplode += Grenade_OnExplode;
+        Grenade.OnBeep+= Grenade_OnBeep;
     }
 
     private void OnDisable()
@@ -38,6 +40,8 @@ public class AudioManager : MonoBehaviour
         Health.OnDeath -= Healt_OnDeath;
         DiscoBallManger.OnDiscoBallHit -= PlayDiscoPartyMusic;
         Jetpack.OnJetpack -= Jetpack_OnJetpack;
+        Grenade.OnExplode -= Grenade_OnExplode;
+        Grenade.OnBeep -= Grenade_OnBeep;
     }
     #endregion
 
@@ -145,6 +149,16 @@ public class AudioManager : MonoBehaviour
     private void Jetpack_OnJetpack()
     {
         PlayRandomSound(_soundCollection.Jetpack);
+    }
+
+    private void Grenade_OnExplode(Grenade grenade)
+    {
+        PlayRandomSound(_soundCollection.GrenadeExplode);
+    }
+
+    private void Grenade_OnBeep(Grenade grenade)
+    {
+        PlayRandomSound(_soundCollection.GrenadeBeep);
     }
 
     #endregion
