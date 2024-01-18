@@ -48,6 +48,7 @@ public class Gun : MonoBehaviour
         OnFire += PlayGunAnim;
         OnFire += ActiveScreenShake;
         OnFire += HandleMuzzleFlash;
+        LauchGrenade.OnThrowGrenade += PlayGunAnim;
     }
 
     private void OnDisable()
@@ -55,6 +56,7 @@ public class Gun : MonoBehaviour
         OnFire -= PlayGunAnim;
         OnFire -= ActiveScreenShake;
         OnFire -= HandleMuzzleFlash;
+        LauchGrenade.OnThrowGrenade -= PlayGunAnim;
     }
 
     private void Update()

@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
         Jetpack.OnJetpack+= Jetpack_OnJetpack;
         Grenade.OnExplode += Grenade_OnExplode;
         Grenade.OnBeep+= Grenade_OnBeep;
+        LauchGrenade.OnThrowGrenade += LauchGrenade_OnThrowGrenade;
     }
 
     private void OnDisable()
@@ -42,6 +43,7 @@ public class AudioManager : MonoBehaviour
         Jetpack.OnJetpack -= Jetpack_OnJetpack;
         Grenade.OnExplode -= Grenade_OnExplode;
         Grenade.OnBeep -= Grenade_OnBeep;
+        LauchGrenade.OnThrowGrenade -= LauchGrenade_OnThrowGrenade;
     }
     #endregion
 
@@ -149,6 +151,11 @@ public class AudioManager : MonoBehaviour
     private void Jetpack_OnJetpack()
     {
         PlayRandomSound(_soundCollection.Jetpack);
+    }
+
+    private void LauchGrenade_OnThrowGrenade()
+    {
+        PlayRandomSound(_soundCollection.GrenadeShoot);
     }
 
     private void Grenade_OnExplode(Grenade grenade)
