@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
 
+    public bool CanMove => _canMove;
+
     private Rigidbody2D _rb;
 
     private float _moveX;

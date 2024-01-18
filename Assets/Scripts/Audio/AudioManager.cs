@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         Grenade.OnExplode += Grenade_OnExplode;
         Grenade.OnBeep+= Grenade_OnBeep;
         LauchGrenade.OnThrowGrenade += LauchGrenade_OnThrowGrenade;
+        Enemy.OnPlayerHit+= Enemy_OnPlayerHit;
     }
 
     private void OnDisable()
@@ -44,6 +45,7 @@ public class AudioManager : MonoBehaviour
         Grenade.OnExplode -= Grenade_OnExplode;
         Grenade.OnBeep -= Grenade_OnBeep;
         LauchGrenade.OnThrowGrenade -= LauchGrenade_OnThrowGrenade;
+        Enemy.OnPlayerHit -= Enemy_OnPlayerHit;
     }
     #endregion
 
@@ -166,6 +168,11 @@ public class AudioManager : MonoBehaviour
     private void Grenade_OnBeep(Grenade grenade)
     {
         PlayRandomSound(_soundCollection.GrenadeBeep);
+    }
+
+    private void Enemy_OnPlayerHit()
+    {
+        PlayRandomSound(_soundCollection.PlayerHit);
     }
 
     #endregion
