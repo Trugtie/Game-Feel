@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour,IDamgeable
 {
     public GameObject SpaltterPrefab => _splatterPrefab;
     public GameObject DeathVFXPrefab=> _deathVFXPrefab;
@@ -17,7 +17,18 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject _deathVFXPrefab;
 
     private int _currentHealth;
-   
+
+    private Flash _flash;
+    private Health _health;
+    private Knockback _knockback;
+
+    private void Awake()
+    {
+        _flash = GetComponent<Flash>();
+        _health = GetComponent<Health>();
+        _knockback = GetComponent<Knockback>();
+    }
+
     private void Start() {
         ResetHealth();
     }
@@ -33,5 +44,17 @@ public class Health : MonoBehaviour
             OnDeath?.Invoke(this);
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamge(Vector2 damgeDir,int damgeAmout, float knockbackThurst)
+    {
+        _health.TakeDamage(damgeAmout);
+
+        _knockback.GetKnockback(damgeDir, knockbackThurst);
+    }
+
+    public void TakeHit()
+    {
+        _flash.StartFlash();
     }
 }

@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour,ILeanable,IDamgeable
+public class Enemy : MonoBehaviour,ILeanable
 {
     [SerializeField] private float _jumpForce = 7f;
     [SerializeField] private float _jumpInterval = 4f;
     [SerializeField] private float _changeDirectionInterval = 3f;
+    [SerializeField] private int _damageAmount = 1;
+    [SerializeField] private float _knockbackThurst = 25f;
 
     private int _currentDirection;
 
@@ -14,10 +16,6 @@ public class Enemy : MonoBehaviour,ILeanable,IDamgeable
     private Movement _movement;
 
     private ColorChanger _colorChanger;
-
-    private Flash _flash;
-    private Health _health;
-    private Knockback _knockback;
 
     public Vector2 MoveDir => new Vector2(_currentDirection,0);
 
@@ -28,10 +26,6 @@ public class Enemy : MonoBehaviour,ILeanable,IDamgeable
         _movement = GetComponent<Movement>();
 
         _colorChanger = GetComponent<ColorChanger>();
-
-        _flash = GetComponent<Flash>();
-        _health = GetComponent<Health>();
-        _knockback = GetComponent<Knockback>();
     }
 
     private void Start() {
@@ -65,15 +59,17 @@ public class Enemy : MonoBehaviour,ILeanable,IDamgeable
         }
     }
 
-    public void TakeDamge(int damgeAmout, float knockbackThurst)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        _health.TakeDamage(damgeAmout);
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-        _knockback.GetKnockback(PlayerController.Instance.transform.position, knockbackThurst);
-    }
+        if(player == null) { return; }
 
-    public void TakeHit()
-    {
-        _flash.StartFlash();
+        Ihitable iHitable = collision.gameObject.GetComponent<Ihitable>();
+        iHitable?.TakeHit();
+
+        IDamgeable iDamgeable = collision.gameObject.GetComponent<IDamgeable>();
+
+        iDamgeable?.TakeDamge(transform.position, _damageAmount, _knockbackThurst);
     }
 }

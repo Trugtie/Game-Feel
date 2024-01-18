@@ -60,7 +60,8 @@ public class Grenade : MonoBehaviour
             if (collider.gameObject.GetComponent<IDamgeable>() != null)
             {
                 IDamgeable iDamgeableObject = collider.gameObject.GetComponent<IDamgeable>();
-                iDamgeableObject.TakeDamge(_damgeAmount, _knockbackThurst);
+
+                iDamgeableObject.TakeDamge(transform.position, _damgeAmount, _knockbackThurst);
             }
         }
 

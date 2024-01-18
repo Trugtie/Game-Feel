@@ -41,7 +41,8 @@ public class Bullet : MonoBehaviour
         iHitable?.TakeHit();
 
         IDamgeable iDamgeable = other.gameObject.GetComponent<IDamgeable>();
-        iDamgeable?.TakeDamge(_damageAmount, _knockbackThurst);
+
+        iDamgeable?.TakeDamge(_fireDirection, _damageAmount, _knockbackThurst);
 
         _gun.ReleaseBulletToPool(this);
     }

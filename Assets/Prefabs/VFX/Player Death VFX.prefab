@@ -10,7 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 577409563378431703, guid: bf0f20f5e44ffdb46b4b64658995218b, type: 3}
       propertyPath: m_Name
-      value: Base Death VFX
+      value: Player Death VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200507535999134713, guid: bf0f20f5e44ffdb46b4b64658995218b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.7176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200507535999134713, guid: bf0f20f5e44ffdb46b4b64658995218b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8196079
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200507535999134713, guid: bf0f20f5e44ffdb46b4b64658995218b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.96470594
       objectReference: {fileID: 0}
     - target: {fileID: 4998110793262165586, guid: bf0f20f5e44ffdb46b4b64658995218b, type: 3}
       propertyPath: m_LocalPosition.x

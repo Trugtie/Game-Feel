@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IDamgeable:Ihitable
 {
-    void TakeDamge(int damgeAmout,float knockbackThurst);
+    void TakeDamge(Vector2 damgeDir,int damgeAmout,float knockbackThurst);
 }

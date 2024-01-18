@@ -24,9 +24,11 @@ public class DeathSplatterHandler : MonoBehaviour
 
         ColorChanger colorChanger = sender.GetComponent<ColorChanger>();
 
-        Color currentColor = colorChanger.DefaultColor;
+        if (colorChanger) {
+            Color currentColor = colorChanger.DefaultColor;
 
-        splatterSpriteRenderer.color = currentColor;
+            splatterSpriteRenderer.color = currentColor;
+        };
 
         splatterObject.transform.parent = this.transform;
     }
@@ -38,9 +40,12 @@ public class DeathSplatterHandler : MonoBehaviour
         ParticleSystem.MainModule ps = deathVFX.GetComponent<ParticleSystem>().main;
 
         ColorChanger colorChanger = sender.GetComponent<ColorChanger>();
-        Color currentColor = colorChanger.DefaultColor;
 
-        ps.startColor = currentColor;
+        if (colorChanger) {
+            Color currentColor = colorChanger.DefaultColor;
+
+            ps.startColor = currentColor;
+        };
 
         deathVFX.transform.parent = this.transform;
     }
