@@ -41,6 +41,8 @@ public class OneWayPlatform : MonoBehaviour
 
         foreach(CapsuleCollider2D playerCollider in playerColliders)
         {
+            if (playerCollider == null) break;
+
             Physics2D.IgnoreCollision(playerCollider,_collider2D,false);
         }
     }
