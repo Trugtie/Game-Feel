@@ -70,6 +70,8 @@ public class Enemy : MonoBehaviour,ILeanable
 
         IDamgeable iDamgeable = collision.gameObject.GetComponent<IDamgeable>();
 
-        iDamgeable?.TakeDamge(transform.position, _damageAmount, _knockbackThurst);
+        Vector2 damgeDir = (collision.transform.position - transform.position).normalized;
+
+        iDamgeable?.TakeDamge(damgeDir, _damageAmount, _knockbackThurst);
     }
 }

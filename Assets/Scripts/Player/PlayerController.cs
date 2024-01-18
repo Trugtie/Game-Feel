@@ -153,6 +153,8 @@ public class PlayerController : MonoBehaviour,ILeanable
 
     public bool CheckOnPlatform()
     {
+        if (this == null) return false;
+
         bool isPlatform = Physics2D.OverlapBox(_feetPos.position, _feetBoxSize, 0f, _platFormLayer);
         return isPlatform;
     }

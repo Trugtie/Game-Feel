@@ -11,7 +11,7 @@ public class Knockback : MonoBehaviour
     [SerializeField] private float _knockBackTime = .2f;
 
     private Rigidbody2D _rb;
-    private Vector3 _knockBackDirection;
+    private Vector3 _knockbackDirection;
     private float _knockBackThurst;
 
     private void Awake()
@@ -31,9 +31,9 @@ public class Knockback : MonoBehaviour
         OnKnockbackEnd -= KnockbackEnd;
     }
 
-    public void GetKnockback(Vector3 hitDirection, float knockBackThurst)
+    public void GetKnockback(Vector3 knockbackDir, float knockBackThurst)
     {
-        _knockBackDirection = hitDirection;
+        _knockbackDirection = knockbackDir;
         _knockBackThurst = knockBackThurst;
 
         OnKnockbackStart?.Invoke();
@@ -41,8 +41,8 @@ public class Knockback : MonoBehaviour
 
     private void ApplyKnockbackForce()
     {
-        Vector3 difference = (transform.position - _knockBackDirection).normalized * _rb.mass * _knockBackThurst;
-        _rb.AddForce(difference, ForceMode2D.Impulse);
+        Vector3 knockbackDirection =  _knockbackDirection.normalized * _rb.mass * _knockBackThurst;
+        _rb.AddForce(knockbackDirection, ForceMode2D.Impulse);
 
         StartCoroutine(KnockbackRoutine());
     }
