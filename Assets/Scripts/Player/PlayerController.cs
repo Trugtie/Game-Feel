@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour,ILeanable
     [SerializeField] private float _gravityCustomDelayTimerMax = .2f;
     [SerializeField] private float _coyoteTimerMax = 0.5f;
 
+    [SerializeField] private float _maxFallVelocity = -25f;
+
     private float _gravityCustomDelayTimer;
 
     private bool _doubleJumpAvailable;
@@ -88,6 +90,11 @@ public class PlayerController : MonoBehaviour,ILeanable
         if (_gravityCustomDelayTimer > _gravityCustomDelayTimerMax)
         {
             _rigidBody.AddForce(new Vector2(0, -_extraGravity*Time.deltaTime));
+
+            if (_rigidBody.velocity.y < _maxFallVelocity)
+            {
+                _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _maxFallVelocity);
+            }
         }
     }
 

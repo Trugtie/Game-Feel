@@ -12,6 +12,7 @@ public class Jetpack : MonoBehaviour
 
     [SerializeField] private float _jetpackMaxTime = 1f;
     [SerializeField] private float _jetpackStrenght = 10f;
+    [SerializeField] private float _maxJetpackSpeed = 20f;
 
     private FrameInput _frameInput;
     private PlayerInput _playerInput;
@@ -68,6 +69,10 @@ public class Jetpack : MonoBehaviour
             jetpackTime+= Time.deltaTime;
 
             _rigidbody.AddForceY(_jetpackStrenght, ForceMode2D.Force);
+            if (_rigidbody.velocity.y > _maxJetpackSpeed)
+            {
+                _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _maxJetpackSpeed);
+            }
 
             yield return null;
         }
